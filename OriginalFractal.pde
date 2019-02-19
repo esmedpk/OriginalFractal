@@ -5,23 +5,25 @@ public void setup()
 }
 public void draw()
 {
-  fill(126,133,255);
+  fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
   noStroke();
-  fractal(250, 250, 30);
+  sierpinski(0,500,500);
 }
-public void mouseDragged()
+public void mouseDragged()//optional
 {
-  
+
 }
-public void fractal(int x, int y, int num)
+public void sierpinski(int x, int y, int len) 
 {
-  if(num < 10)
+  if(len < 5)
   {
-    ellipse(x, y, x+num, y+num);
+    quad(x, y, x+len/2, y-len, x+len, y, 250, 250); 
   }
   else
   {
-    fractal(x+num/2, y+num/2, num/2);
+    sierpinski(x,y,len/2);
+    sierpinski(x+len/2,y,len/2);
+    sierpinski(x+len/4,y-len/2,len/2);
   }
 }
     
